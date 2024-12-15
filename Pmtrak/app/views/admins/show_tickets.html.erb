@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+<br>
+<h1>All Tickets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ticket ID</th>
+      <th>confirmation_number</th>
+      <th>Buyer name</th>
+      <th>Passenger name</th>
+      <th>Passenger email</th>
+      <th>Train ID</th>
+      <th>Departure station</th>
+      <th>Departure date</th>
+      <th>Departure time</th>
+      <th>Termination station</th>
+      <th>Arrival date</th>
+      <th>Arival time</th>
+      <th>Price</th>
+      <th colspan="2"></th>
+      <!-- Add more ticket attributes as needed -->
+    </tr>
+  </thead>
+  <tbody>
+    <% @tickets.each do |ticket| %>
+      <tr>
+        <td><%= ticket.id %></td>
+        <td><%= ticket.confirmation_number %></td>
+        <td><%= Passenger.find_by_id(ticket.creator_id).name %></td>
+        <td><%= ticket.passenger.name %></td>
+        <td><%= ticket.passenger.email %></td>
+        <td><%= ticket.train.train_number %></td>
+        <td><%= ticket.train.departure_station %></td>
+        <td><%= ticket.train.departure_date %></td>
+        <td><%= ticket.train.departure_time %></td>
+        <td><%= ticket.train.termination_station %></td>
+        <td><%= ticket.train.arrival_date %></td>
+        <td><%= ticket.train.arrival_time %></td>
+        <td><%= ticket.train.ticket_price %></td>
+        <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
+        <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'Create New Tickets', create_tickets_admin_path(@admin) %>
+<br><br>
+<%= link_to 'Back', admin_path(@admin) %>

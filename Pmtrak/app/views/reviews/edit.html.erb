@@ -1,0 +1,10 @@
+<h1>Editing Review</h1>
+
+<%= render 'form', review: @review %>
+
+|
+<% if logged_in? && is_admin?%>
+  <%= link_to "Back", show_reviews_admin_path(@current_user) %>
+<% else %>
+  <%= link_to "Back", my_trips_passenger_path(@current_user) %>
+<% end %>

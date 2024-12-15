@@ -1,0 +1,56 @@
+
+<h1>Edit Profile</h1>
+
+<%= form_with(model: @passenger, local: true) do |form| %>
+  <% if @passenger.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@passenger.errors.count, "error") %> prohibited this passenger from being saved:</h2>
+
+      <ul>
+        <% @passenger.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone_number %>
+    <%= form.text_field :phone_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :credit_number %>
+    <%= form.text_field :credit_number %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Update Profile" %>
+  </div>
+<% end %>
+
+<% if logged_in? && is_admin?%>
+  <%= link_to "Back", show_passengers_admin_path(@current_user) %>
+<% else %>
+  <%= link_to 'Back', @passenger %>
+<% end %>

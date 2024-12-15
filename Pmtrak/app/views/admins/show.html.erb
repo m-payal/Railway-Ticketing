@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Admin</h1>
+
+<%= link_to 'Show and Edit Admin Details', display_admin_path(@admin) %>
+<br>
+<br>
+<%= link_to 'View all Trains', show_trains_admin_path(@admin) %>
+<br>
+<br>
+<%= link_to 'View all Passengers', show_passengers_admin_path(@admin) %>
+<br>
+<br>
+<%= link_to 'View all Tickets', show_tickets_admin_path(@admin) %>
+<br>
+<br>
+<%= link_to 'View all reviews', show_reviews_admin_path(@admin) %>
+<br>
+<br>
+<%= link_to 'Show users by train', show_train_customers_admin_path(@admin) %>
+<br>
+<br>
+<%= link_to 'Logout', logout_path %>
+<br>
+
